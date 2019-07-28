@@ -1,16 +1,12 @@
 const express = require('express');
 const app = express();
 
+const indexRoute = require('./Routes/index');
+const usersRoute = require('./Routes/users');
 
-//Foi criado um endpoint que bate no endereço onde essa API vai estar instalada.
-app.get('/', (req,res) => {
-    let obj = req.query;
-    return res.send({message: "Está funcionando o metodo GET. você enviou nome ${obj.nome} com idade ${obj.idade} anos"});
-})
-
-app.post('/', (req,res) => {
-    return res.send({message: 'Está funcionando o método POST'});
-})
+//Associar estas 2 instacias no app 
+app.use('/', indexRoute);
+app.use('/users', usersRoute);
 
 app.listen(3000);
 
