@@ -1,16 +1,29 @@
 const express = require('express');
-const router = express.Router();
+const router = express.Router(); 
+const Users = require('../model/user');
 
 
 router.get('/', (req, res) => {
-    return res.send({message: 'Tudo ok com o metodo GET da rota do usuario.' });
-});
-
-router.post('/', (req, res) => {
-    return res.send({message: 'Tudo ok com o metodo POST da rota do usuario.'});
-});
+    Users.find({}, (err, data) => {
+        if (err) return res.send({ error: 'Erro na consulta de usuario' });
+        return res.send(data);
+    });
+ });
 
 router.post('/create', (req, res) => {
-    return res.send({message: 'usuario criado com sucesso'});
+    const { email, password } = req.body;
+    if (!email || !password) return res.send({ error: 'Dados insuficientes!'});
+    
+    Users.findOne({email}, (err, data) => {
+        if(err) return res.send({ error: 'Erro ao buscar usuário!'});
+        if(data) return res.send({ error: 'Usuário já cadastrado'});
+        
+        Users.create(req.body, (err, data) =>{
+            if (err) return res. send({ error: 'Erro ao criar usuário!'});
+
+            data.password = undefined;
+            return res.send(data);
+        });
+    });
 });
 module.exports = router;

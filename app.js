@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 //Conexão com o banco de dados
 
 const url = 'mongodb+srv://admin_user:doninha100db@clusterapi-56xut.mongodb.net/test?retryWrites=true&w=majority'
-const options = { reconnectTries: Number.MAX_VALUE, reconnetInterval: 500, poolSize: 5, useNewUrlJParser: true };
+const options = { reconnectTries: Number.MAX_VALUE, reconnetInterval: 500, poolSize: 5, useNewUrlParser: true };
 
 mongoose.connect(url, options);
 mongoose.set('useCreateIndex', true);
