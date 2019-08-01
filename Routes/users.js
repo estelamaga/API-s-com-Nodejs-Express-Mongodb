@@ -80,7 +80,7 @@ router.post('/create', async (req, res) => {
 //     }).select('+password');
 // });
 
-//Criar um endpoint de autenticação
+//Criar um endpoint de autenticação para a rota
 //Refatoração da função com async e await
 router.post('/auth', async (req, res) => {
     const { email, password } = req.body;
