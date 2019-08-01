@@ -9,15 +9,25 @@ const bcrypt = require('bcrypt');
      created: { type: Date, default: Date.now }
  });
 
- //Antes de salvar vai ser chamada uma função
- UserSchema.pre('save', function (next) {
+ //Refatorando as funções usando async await
+ UserSchema.pre('save', async function (next) {
     let user = this;
     if (!user.isModified('password')) return next();
 
-    bcrypt.hash(user.password, 10, (err, encrypted) => {
-        user.password = encrypted;
-        return next();
-    });
+    user.password = await bcrypt.hash(user.password, 10)
+    return next();
  });
+
+ //Exemplo da função sem async await
+//  UserSchema.pre('save', function (next) {
+//     let user = this;
+//     if (!user.isModified('password')) return next();
+
+//     bcrypt.hash(user.password, 10, (err, encrypted) => {
+//         user.password = encrypted;
+//         return next();
+//     });
+//  });
+
 
 module.exports = mongoose.model('User', UserSchema);
