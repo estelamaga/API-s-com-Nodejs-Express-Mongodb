@@ -5,8 +5,8 @@ const bodyParser = require('body-parser');
 
 //Conexão com o banco de dados
 
-const url = 'mongodb+srv://admin_user:doninha100db@clusterapi-56xut.mongodb.net/test?retryWrites=true&w=majority'
-const options = { reconnectTries: Number.MAX_VALUE, poolSize: 5, useNewUrlParser: true };
+const url = 'mongodb+srv://starshine:g36sos8ziebchcddee45t67u@apiudemy-lsbtw.mongodb.net/test?retryWrites=true&w=majority';
+const options = { reconnectTries: Number.MAX_VALUE, recconectInterval: 500,  poolSize: 5, useNewUrlParser: true };
 
 mongoose.connect(url, options);
 mongoose.set('useCreateIndex', true);
