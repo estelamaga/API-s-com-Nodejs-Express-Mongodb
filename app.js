@@ -2,10 +2,11 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const config = require('./config/config');
 
 //Conexão com o banco de dados
 
-const url = 'mongodb+srv://starshine:g36sos8ziebchcddee45t67u@apiudemy-lsbtw.mongodb.net/test?retryWrites=true&w=majority';
+const url = config.bd;
 const options = { reconnectTries: Number.MAX_VALUE, recconectInterval: 500,  poolSize: 5, useNewUrlParser: true };
 
 mongoose.connect(url, options);
