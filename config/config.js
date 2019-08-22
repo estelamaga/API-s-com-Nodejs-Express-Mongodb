@@ -8,17 +8,23 @@ const config = () => {
     switch(env){
         case 'dev':
             return{
-            bd :'mongodb+srv://starshine:g36sos8ziebchcddee45t67u@apiudemy-lsbtw.mongodb.net/test?retryWrites=true&w=majority'
+            bd :'mongodb+srv://starshine:g36sos8ziebchcddee45t67u@apiudemy-lsbtw.mongodb.net/test?retryWrites=true&w=majority', 
+            jwt_pass: 'es02te09la19',
+            jwt_expires_in: '7d'
             }
 
         case 'hml':
              return{
-            bd :'mongodb+srv://starshine:g36sos8ziebchcddee45t67u@apiudemy-lsbtw.mongodb.net/test?retryWrites=true&w=majority'
+            bd :'mongodb+srv://starshine:g36sos8ziebchcddee45t67u@apiudemy-lsbtw.mongodb.net/test?retryWrites=true&w=majority',
+                jwt_pass: 'es02te09la19',
+            jwt_expires_in: '7d'
             }
         
         case 'prod':
             return {
-            bd :'mongodb+srv://starshine:g36sos8ziebchcddee45t67u@apiudemy-lsbtw.mongodb.net/test?retryWrites=true&w=majority'
+            bd :'mongodb+srv://starshine:g36sos8ziebchcddee45t67u@apiudemy-lsbtw.mongodb.net/test?retryWrites=true&w=majority',
+            jwt_pass: 'pk98wntndkmsiwye56393jd',
+            jwt_expires_in: '7d'
         }
     }
 }

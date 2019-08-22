@@ -3,11 +3,12 @@ const router = express.Router();
 const Users = require('../model/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const config = require('../config/config');
 
 //Funções auxiliares
 
 const createUserToken = (userId) =>{
-    return jwt.sign({ id: userId }, 'es02te09la19', { expiresIn: '7d'});
+    return jwt.sign({ id: userId }, config.jwt_pass, { expiresIn: config.jwt_expires_in});
 }
 
 //Exemplo de função sem Async await
